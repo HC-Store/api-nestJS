@@ -14,6 +14,10 @@ export class CategoriasService {
   return this.categoriaRepository.find();
 }
 
+async findOne(id: number) {
+  return this.categoriaRepository.findOneBy({ id });
+}
+
 async create(nome: string) {
   const categoria = this.categoriaRepository.create({ nome });
 

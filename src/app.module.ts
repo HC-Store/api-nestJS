@@ -4,6 +4,8 @@ import { AppService } from './app.service.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { CategoriasModule } from './categorias/categorias.module.js';
+import { ProdutosModule } from './produtos/produtos.module.js';
+import { ProdutoImagemModule } from './produto-imagem/produto-imagem.module.js';
 
 @Module({
   imports: [
@@ -19,10 +21,14 @@ TypeOrmModule.forRoot({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   autoLoadEntities: true,
-  synchronize: true,
+  synchronize: false,
 }),
 
 CategoriasModule,
+
+ProdutosModule,
+
+ProdutoImagemModule,
 
   ],
   controllers: [AppController],
