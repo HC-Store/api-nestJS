@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Patch } from '@nestjs/common';
 import { CreateProdutoDto } from './dto/create-produto.dto.js';
 import { ProdutosService } from './produtos.service.js';
 import { UpdateProdutoDto } from './dto/update-produto.dto.js';
@@ -31,9 +31,17 @@ update(
 }
 
 
-@Delete(':id')
+@Delete(':id') 
 remove(@Param('id') id: string) {
   return this.produtosService.remove(Number(id));
+}
+
+@Patch(':id/status')
+  alterarStatus(
+  @Param('id') id: string,
+  @Body('ativo') ativo: boolean,
+) {
+  return this.produtosService.alterarStatus(Number(id), ativo);
 }
 
 }

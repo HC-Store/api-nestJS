@@ -57,5 +57,24 @@ async remove(id: number) {
   };
 }
 
+async alterarStatus(id: number, ativo: boolean) {
+  await this.produtoRepository.update(id, {
+    ativo,
+    updatedAt: new Date(),
+  });
+
+  const produto = await this.produtoRepository.findOne({
+    where: { id },
+    relations: {
+      categoria: true,
+    },
+  });
+
+  return {
+    message: 'Status do produto atualizado com sucesso',
+    produto,
+  };
+}
+
 
 }

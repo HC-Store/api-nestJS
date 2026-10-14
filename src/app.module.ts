@@ -6,6 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { CategoriasModule } from './categorias/categorias.module.js';
 import { ProdutosModule } from './produtos/produtos.module.js';
 import { ProdutoImagemModule } from './produto-imagem/produto-imagem.module.js';
+import { UsuariosModule } from './usuarios/usuarios.module.js';
+import { EnderecosModule } from './enderecos/enderecos.module.js';
 
 @Module({
   imports: [
@@ -29,6 +31,10 @@ CategoriasModule,
 ProdutosModule,
 
 ProdutoImagemModule,
+
+UsuariosModule,
+
+EnderecosModule,
 
   ],
   controllers: [AppController],
