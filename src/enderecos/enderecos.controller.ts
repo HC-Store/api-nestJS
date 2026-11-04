@@ -8,6 +8,7 @@ import {
   Put,
   Delete,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 
 import { EnderecosService } from './enderecos.service.js';
@@ -23,6 +24,13 @@ export class EnderecosController {
   @Get()
   findAll() {
     return this.enderecosService.findAll();
+  }
+
+  // Endereços do usuário logado (exige token JWT)
+  @Get('meus')
+  @UseGuards(JwtAuthGuard)
+  findMine(@Req() req: { user: { id: number } }) {
+    return this.enderecosService.findByUsuario(req.user.id);
   }
 
   // Consulta pública

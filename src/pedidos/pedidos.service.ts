@@ -53,6 +53,14 @@ export class PedidosService {
     return pedidos.map((pedido) => this.ocultarSenha(pedido));
   }
 
+  async findByUsuario(usuarioId: number) {
+    return this.pedidoRepository.find({
+      where: { usuarioId },
+      relations: { endereco: true },
+      order: { id: 'DESC' },
+    });
+  }
+
   async findOne(id: number) {
     const pedido = await this.pedidoRepository.findOne({
       where: { id },
