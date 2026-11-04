@@ -9,6 +9,7 @@ import {
   Patch,
   Post,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 
 import { PedidosService } from './pedidos.service.js';
@@ -25,6 +26,12 @@ export class PedidosController {
   @Get()
   findAll() {
     return this.pedidosService.findAll();
+  }
+
+  // Pedidos do usuário logado
+  @Get('meus')
+  findMine(@Req() req: { user: { id: number } }) {
+    return this.pedidosService.findByUsuario(req.user.id);
   }
 
   @Get(':id')
