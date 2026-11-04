@@ -16,6 +16,10 @@ export class EnderecosService {
     return this.enderecoRepository.find();
   }
 
+  async findByUsuario(usuarioId: number) {
+    return this.enderecoRepository.find({ where: { usuarioId } });
+  }
+
   async findOne(id: number) {
     const endereco = await this.enderecoRepository.findOne({
       where: { id },
