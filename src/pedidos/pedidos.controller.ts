@@ -28,6 +28,22 @@ export class PedidosController {
     return this.pedidosService.findAll();
   }
 
+  // Finaliza a compra: o app envia só os itens; preço, estoque e cupom
+  // são validados no servidor
+  @Post('checkout')
+  checkout(
+    @Req() req: { user: { id: number } },
+    @Body()
+    dados: {
+      enderecoId: number;
+      items: { produtoId: number; quantidade: number }[];
+      tipoEntrega?: string | null;
+      cupomCodigo?: string | null;
+    },
+  ) {
+    return this.pedidosService.checkout(req.user.id, dados);
+  }
+
   // Pedidos do usuário logado
   @Get('meus')
   findMine(@Req() req: { user: { id: number } }) {

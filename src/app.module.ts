@@ -15,6 +15,9 @@ import { ItemCarrinhoModule } from './itemcarrinho/itemcarrinho.module.js';
 import { PedidosModule } from './pedidos/pedidos.module.js';
 import { ItemPedidoModule } from './itempedido/itempedido.module.js';
 import { AuthModule } from './auth/auth.module.js';
+import { CuponsModule } from './cupons/cupons.module.js';
+import { SiteConfigModule } from './site-config/site-config.module.js';
+import { PagamentosModule } from './pagamentos/pagamentos.module.js';
 
 @Module({
   imports: [
@@ -43,6 +46,9 @@ import { AuthModule } from './auth/auth.module.js';
     PedidosModule,
     ItemPedidoModule,
     AuthModule,
+    CuponsModule,
+    SiteConfigModule,
+    PagamentosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
